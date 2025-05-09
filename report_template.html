@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Security Analysis Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #000;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            color: #444;
+            margin-top: 30px;
+        }
+        
+        h3 {
+            margin-top: 20px;
+        }
+        
+        .summary {
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .summary-table th, .summary-table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        
+        .summary-table th {
+            background-color: #f2f2f2;
+        }
+        
+        .issue {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .issue-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .severity {
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 4px;
+            color: white;
+        }
+        
+        .critical {
+            background-color: #d9534f;
+        }
+        
+        .high {
+            background-color: #f0ad4e;
+        }
+        
+        .medium {
+            background-color: #ffd700;
+            color: #333;
+        }
+        
+        .low {
+            background-color: #5bc0de;
+        }
+        
+        .code-snippet {
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+        
+        .highlighted-line {
+            background-color: #ffe6e6;
+            font-weight: bold;
+        }
+        
+        .suggestion {
+            background-color: #dff0d8;
+            border: 1px solid #d6e9c6;
+            border-radius: 4px;
+            padding: 10px;
+            margin-top: 10px;
+        }
+        
+        .file-section {
+            margin-top: 40px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            background-color: #fff;
+        }
+        
+        .file-path {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #f8f9fa;
+            padding: 5px;
+            border-radius: 3px;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body>
+    <h1> AI Security Analysis Report</h1>
+    
+    <div class="summary">
+        <h2>Summary</h2>
+        <table class="summary-table">
+            <thead>
+                <tr>
+                    <th>Repository</th>
+                    <th>Pull Request</th>
+                    <th>Analysis Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{repository}}</td>
+                    <td>PR #{{pull_request}}</td>
+                    <td>{{timestamp}}</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3>Issue Breakdown</h3>
+        <table class="summary-table">
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Count</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Critical Security Issues</td>
+                    <td>{{critical_count}}</td>
+                </tr>
+                <tr>
+                    <td>High Security Issues</td>
+                    <td>{{high_count}}</td>
+                </tr>
+                <tr>
+                    <td>Medium Security Issues</td>
+                    <td>{{medium_count}}</td>
+                </tr>
+                <tr>
+                    <td>Low Security Issues</td>
+                    <td>{{low_count}}</td>
+                </tr>
+                <tr>
+                    <td>Optimization Opportunities</td>
+                    <td>{{optimization_count}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    {{#file_sections}}
+    <div class="file-section">
+        <h2>File: <span class="file-path">{{file_path}}</span></h2>
+        
+        {{#issues}}
+        <div class="issue">
+            <div class="issue-header">
+                <h3>{{issue_id}}: {{description}}</h3>
+                <span class="severity {{severity}}">{{severity}}</span>
+            </div>
+            
+            <p><strong>Type:</strong> {{issue_type}}</p>
+            <p><strong>Location:</strong> Line {{line_number}}</p>
+            
+            {{#code_snippet}}
+            <div class="code-snippet">
+                {{code_snippet}}
+            </div>
+            {{/code_snippet}}
+            
+            <div class="suggestion">
+                <p><strong>Suggestion:</strong> {{suggestion}}</p>
+            </div>
+            
+            {{#cwe}}
+            <p><strong>CWE:</strong> <a href="https://cwe.mitre.org/data/definitions/{{cwe_number}}.html" target="_blank">{{cwe}}</a></p>
+            {{/cwe}}
+        </div>
+        {{/issues}}
+    </div>
+    {{/file_sections}}
+    
+    <div class="footer">
+        <p>Generated by AI Security Analyzer on {{timestamp}}</p>
+    </div>
+</body>
+</html>

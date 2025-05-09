@@ -1,0 +1,54 @@
+{
+    "azure_devops_pat": "",
+    "openai_api_key": "",
+    "post_comments": true,
+    "severity_thresholds": {
+      "critical": 0,
+      "high": 0,
+      "medium": 5,
+      "low": 10
+    },
+    "analysis": {
+      "skip_files": [
+        "*.min.js",
+        "package-lock.json",
+        "yarn.lock",
+        "*.svg",
+        "*.png",
+        "*.jpg"
+      ],
+      "languages": {
+        "js": "javascript",
+        "jsx": "javascript",
+        "ts": "typescript",
+        "tsx": "typescript",
+        "py": "python",
+        "cs": "csharp",
+        "java": "java",
+        "go": "go",
+        "rb": "ruby",
+        "php": "php",
+        "sql": "sql"
+      }
+    },
+    "rules": {
+      "enabled_checks": [
+        "security_vulnerabilities",
+        "code_quality",
+        "performance_optimization",
+        "compliance"
+      ]
+    },
+    "report": {
+      "include_code_snippets": true,
+      "max_snippet_length": 10,
+      "group_by_file": true
+    },
+    "company_specifics": {
+      "compliance_rules": [
+        "PII_DATA_HANDLING",
+        "FINANCIAL_DATA_ENCRYPTION",
+        "AUDIT_LOGGING"
+      ]
+    }
+  }

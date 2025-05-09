@@ -1,0 +1,26 @@
+- stage: SecurityAnalysis
+  displayName: "AI Security Analysis"
+  jobs:
+    - job: AnalyzePR
+      displayName: "Analyze PR for Security Issues"
+      steps:
+        - checkout: self
+          fetchDepth: 0
+        - task: UsePythonVersion@0
+          inputs:
+            versionSpec: '3.9'
+            addToPath: true
+        - script: |
+            pip install -r requirements.txt
+            python main.py --org $(System.CollectionUri) \
+                           --repo-id $(Build.Repository.ID) \
+                           --pr-id $(System.PullRequest.PullRequestId) \
+                           --output $(Build.ArtifactStagingDirectory)/security-report.json
+          displayName: 'Run Security Analysis'
+          env:
+            AZURE_DEVOPS_PAT: $(System.AccessToken)
+            OPENAI_API_KEY: $(OPENAI_API_KEY)
+        - task: PublishBuildArtifacts@1
+          inputs:
+            pathtoPublish: $(Build.ArtifactStagingDirectory)/security-report.json
+            artifactName: SecurityAnalysisReport

@@ -1,0 +1,100 @@
+{
+    "javascript": [
+      {
+        "id": "JS-SEC-001",
+        "name": "Unsafe Eval Use",
+        "pattern": "eval\\(|new Function\\(",
+        "severity": "critical",
+        "description": "Use of eval() or Function constructor can lead to code injection vulnerabilities",
+        "suggestion": "Avoid using eval() or new Function(). Use safer alternatives.",
+        "cwe": "CWE-95"
+      },
+      {
+        "id": "JS-SEC-002",
+        "name": "SQL Injection Risk",
+        "pattern": "executeQuery\\(.*\\+|db\\.query\\(.*\\+|connection\\.query\\(.*\\+",
+        "severity": "critical",
+        "description": "Dynamic SQL queries with string concatenation create SQL injection risks",
+        "suggestion": "Use parameterized queries or prepared statements instead of string concatenation",
+        "cwe": "CWE-89"
+      },
+      {
+        "id": "JS-SEC-003",
+        "name": "XSS Vulnerability",
+        "pattern": "innerHTML|outerHTML|document\\.write|\\$\\(.*\\)\\.html\\(",
+        "severity": "high",
+        "description": "Direct manipulation of HTML can lead to Cross-Site Scripting (XSS) vulnerabilities",
+        "suggestion": "Use textContent or innerText instead, or sanitize HTML input using DOMPurify",
+        "cwe": "CWE-79"
+      }
+    ],
+    "python": [
+      {
+        "id": "PY-SEC-001",
+        "name": "Command Injection Risk",
+        "pattern": "os\\.system\\(|subprocess\\.call\\(|subprocess\\.Popen\\(|exec\\(",
+        "severity": "critical",
+        "description": "Potential command injection vulnerability when user input is used in system commands",
+        "suggestion": "Use subprocess.run() with appropriate security parameters or shlex.quote() to sanitize inputs",
+        "cwe": "CWE-78"
+      },
+      {
+        "id": "PY-SEC-002",
+        "name": "Unsafe Deserialization",
+        "pattern": "pickle\\.loads\\(|yaml\\.load\\(",
+        "severity": "critical",
+        "description": "Deserialization of untrusted data can lead to arbitrary code execution",
+        "suggestion": "Use safer serialization formats like JSON, or validate and sanitize data before deserializing",
+        "cwe": "CWE-502"
+      },
+      {
+        "id": "PY-SEC-003",
+        "name": "SQL Injection Risk",
+        "pattern": "execute\\(.*\\%|execute\\(.*\\+|cursor\\.execute\\(.*\\+",
+        "severity": "critical",
+        "description": "Dynamic SQL queries with string formatting create SQL injection risks",
+        "suggestion": "Use parameterized queries with placeholders instead of string formatting or concatenation",
+        "cwe": "CWE-89"
+      }
+    ],
+    "java": [
+      {
+        "id": "JAVA-SEC-001",
+        "name": "XXE Vulnerability",
+        "pattern": "DocumentBuilderFactory|SAXParserFactory|XMLInputFactory",
+        "severity": "high",
+        "description": "XML parsers may be vulnerable to XXE attacks if not configured properly",
+        "suggestion": "Disable external entity processing by setting features on DocumentBuilderFactory",
+        "cwe": "CWE-611"
+      },
+      {
+        "id": "JAVA-SEC-002",
+        "name": "Path Traversal Risk",
+        "pattern": "new File\\(|Paths\\.get\\(",
+        "severity": "high",
+        "description": "Potential path traversal vulnerability when using user input in file operations",
+        "suggestion": "Validate and sanitize file paths, use allowlist approach for permitted paths",
+        "cwe": "CWE-22"
+      }
+    ],
+    "csharp": [
+      {
+        "id": "CSHARP-SEC-001",
+        "name": "LDAP Injection",
+        "pattern": "DirectorySearcher|DirectoryEntry",
+        "severity": "high",
+        "description": "LDAP queries with user input may be vulnerable to LDAP injection",
+        "suggestion": "Properly escape LDAP special characters in user input before using in LDAP queries",
+        "cwe": "CWE-90"
+      },
+      {
+        "id": "CSHARP-SEC-002",
+        "name": "Weak Cryptography",
+        "pattern": "MD5|SHA1|DES",
+        "severity": "high",
+        "description": "Use of weak or outdated cryptographic algorithms",
+        "suggestion": "Use modern encryption algorithms like AES for encryption and SHA-256 or better for hashing",
+        "cwe": "CWE-327"
+      }
+    ]
+  }

@@ -1,0 +1,81 @@
+{
+    "javascript": [
+      {
+        "id": "JS-NAMING-001",
+        "description": "Use camelCase for variable and function names",
+        "pattern": "let [a-z_]+ =|var [a-z_]+ =|const [a-z_]+ =|function [a-z_]+\\(",
+        "severity": "low",
+        "suggestion": "Use camelCase for naming variables and functions (e.g., myVariable instead of my_variable)"
+      },
+      {
+        "id": "JS-INDENT-001",
+        "description": "Use consistent indentation (2 spaces)",
+        "pattern": "^\\t+|^   +",
+        "severity": "low",
+        "suggestion": "Use 2 spaces for indentation instead of tabs or inconsistent spacing"
+      },
+      {
+        "id": "JS-SEMICOLON-001",
+        "description": "Always use semicolons",
+        "pattern": "\\}[\r\n]|\\)[\r\n]|\\][\r\n]|\\w[\r\n]",
+        "severity": "low",
+        "suggestion": "Add semicolons at the end of statements"
+      }
+    ],
+    "python": [
+      {
+        "id": "PY-NAMING-001",
+        "description": "Use snake_case for variable and function names",
+        "pattern": "def [a-z][a-zA-Z0-9]*\\(|[a-z][a-zA-Z0-9]* =",
+        "severity": "low",
+        "suggestion": "Use snake_case for naming variables and functions (e.g., my_variable instead of myVariable)"
+      },
+      {
+        "id": "PY-INDENT-001",
+        "description": "Use 4 spaces for indentation",
+        "pattern": "^\\t+|^ {1,3}\\S|^ {5,}\\S",
+        "severity": "low",
+        "suggestion": "Use 4 spaces for indentation"
+      },
+      {
+        "id": "PY-DOCSTRING-001",
+        "description": "Missing docstring",
+        "pattern": "def \\w+\\([^)]*\\):",
+        "negative_pattern": "def \\w+\\([^)]*\\):\\s*[\r\n]+\\s*[\"\\']",
+        "severity": "low",
+        "suggestion": "Add docstrings to all functions"
+      }
+    ],
+    "java": [
+      {
+        "id": "JAVA-NAMING-001",
+        "description": "Class names should be in PascalCase",
+        "pattern": "class [a-z]",
+        "severity": "low",
+        "suggestion": "Class names should start with an uppercase letter"
+      },
+      {
+        "id": "JAVA-NAMING-002",
+        "description": "Method names should be in camelCase",
+        "pattern": "public|private|protected|static [A-Za-z<>\\[\\]]+ [A-Z]",
+        "severity": "low",
+        "suggestion": "Method names should start with a lowercase letter"
+      }
+    ],
+    "csharp": [
+      {
+        "id": "CS-NAMING-001",
+        "description": "Use PascalCase for class names and public members",
+        "pattern": "class [a-z]|public [A-Za-z<>\\[\\]]+ [a-z]",
+        "severity": "low",
+        "suggestion": "Use PascalCase for class names and public members"
+      },
+      {
+        "id": "CS-NAMING-002",
+        "description": "Use camelCase for parameters and local variables",
+        "pattern": "\\([A-Za-z<>\\[\\]]+ [A-Z]\\w*\\)|[A-Za-z<>\\[\\]]+ [A-Z]\\w* = ",
+        "severity": "low",
+        "suggestion": "Use camelCase for parameters and local variables"
+      }
+    ]
+  }

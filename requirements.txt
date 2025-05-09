@@ -1,0 +1,9 @@
+azure-devops
+openai
+requests
+chevron
+python-dotenv
+pyyaml
+regex
+colorama
+gitpython 
